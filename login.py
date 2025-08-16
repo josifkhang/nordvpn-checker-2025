@@ -1,3 +1,6 @@
+# <coded by @josifkhan - telegram>
+# whatsapp: +8801868608046
+# --------------------------------------------------------------------------------------------
 import requests,sys,os
 from datetime import datetime
 from platform import uname
@@ -77,3 +80,4 @@ print(line)
 print(f"\n⬛DONE]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
 input("enter to exit")
 sys.exit()
+
