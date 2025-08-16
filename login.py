@@ -1,4 +1,6 @@
 # <coded by @josifkhan>
+# WHATSAPP: +8801868608046
+# -----------------------------------------------
 import requests,sys
 # colors
 rd  = "\033[1;31m"
@@ -47,3 +49,4 @@ nd = NORDVPN()
 nd.main()
 # -----------------------------------------------------------------------
 # ✅NOTICE: THIS API HAS LIMIT, IF U R INTERESTED IN ACTUAL SOURCE CODE YOU CAN CONTACT ME.
+
