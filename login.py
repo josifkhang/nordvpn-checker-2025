@@ -9,7 +9,7 @@ rd  = "\033[1;31m"
 yl  = "\033[1;33m"
 grn = "\033[1;32m"
 en  = "\033[0m"
-ok  = [0]
+ok  = []
 tts = [0]
 xa  = []
 line= "-"*60
@@ -71,14 +71,15 @@ try:
 	nd = NORDVPN()
 	nd.main()
 except KeyboardInterrupt:
-	print(f"\n⬛DONE]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
+	print(f"\n⬛DONE]: {len(xa)}/{grn}{len(ok)}{en}/{tts[0]}")
 	input("+stopped by user / enter to exit")
 	sys.exit()
 # -----------------------------------------------------------------------
 # ✅NOTICE: THIS API HAS LIMIT, IF U R INTERESTED IN ACTUAL SOURCE CODE YOU CAN CONTACT ME.
 print(line)
-print(f"\n⬛DONE]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
+print(f"\n⬛DONE]: {len(xa)}/{grn}{len(ok)}{en}/{tts[0]}")
 input("enter to exit")
 sys.exit()
+
 
 
